@@ -1,0 +1,10 @@
+(defun power (base exp)
+  (cond ((= exp 0) 1)
+        ((= (mod exp 2) 0)
+         (power (* base base) (/ exp 2)))
+        (t
+         (* base (power (* base base) (/ (- exp 1) 2))))))
+(power 3 2)
+(power 4 12)
+(power 2 10)
+(power 4 3)

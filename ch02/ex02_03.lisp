@@ -1,0 +1,11 @@
+(defparameter *lisp-grammar*
+  '((sexp -> single-par-expr list-expr)
+    (single-par-expr -> (single-par-func parameter))
+    (single-par-func -> atom cons car cdr null)
+    (lambda-expr -> (lambda (parameter*) (sexp)))
+    (list-expr -> (list parameter parameter*))
+    (parameter* -> () (parameter parameter*))
+    (parameter -> a b c)))
+(setf *grammar* *lisp-grammar*)
+(generate-all 'sexp)
+(generate 'lambda-expr)

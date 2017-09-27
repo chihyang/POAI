@@ -1,0 +1,13 @@
+(defun generate (phrase)
+  "Generate a random sentence or phrase"
+  (cond ((listp phrase)
+         (mappend #'generate phrase))
+        ((non-terminal phrase)
+         (generate (random-elt (rewrites phrase))))
+        (t (list phrase))))
+(defun non-terminal (phrase)
+  (not (null (rewrites phrase))))
+(generate 'noun)
+(generate 'verb)
+(generate 'verb-phrase)
+(generate 'sentence)

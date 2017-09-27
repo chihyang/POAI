@@ -1,0 +1,11 @@
+(defun generate (phrase)
+  "Generate a random sentence or phrase"
+  (let ((choices (rewrites phrase)))
+    (cond ((listp phrase)
+           (mappend #'generate phrase))
+          ((not (null choices))
+           (generate (random-elt choices)))
+          (t (list phrase)))))
+(generate 'noun)
+(generate 'verb)
+(generate 'verb-phrase)
